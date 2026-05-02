@@ -1,5 +1,5 @@
 import './globals.css';
-import { TONProvider } from '@/lib/tonconnect';
+import { TONProvider } from '../../lib/tonconnect'; // ПРЯМОЙ ПУТЬ
 
 export const metadata = { title: 'TON Vampire Survivors' };
 
