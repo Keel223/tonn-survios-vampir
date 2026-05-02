@@ -1,7 +1,9 @@
 import { NextResponse } from 'next/server';
-import { redis } from '@/lib/redis';
+import { redis } from '../../../lib/redis'; // ПРЯМОЙ ПУТЬ
 
-const ADMIN_ID = 6188749367; // ВАШ TELEGRAM ID
+const ADMIN_ID = 6188749367;
+
+// ... остальной код withdraw/route.ts оставьте без изменений! ...
 
 // ФУНКЦИЯ АВТОМАТИЧЕСКОЙ ОТПЛАТЫ TON ИЗ ВАШЕГО КОШЕЛЬКА
 async function sendRealTON(toAddress: string, amountTon: number) {
