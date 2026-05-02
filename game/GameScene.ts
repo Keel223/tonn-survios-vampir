@@ -1,5 +1,11 @@
 import Phaser from 'phaser';
 
+// ЗАЩИТА ОТ СЕРВЕРНОГО РЕНДЕРА: Если мы на сервере, ничего не делаем
+if (typeof window === 'undefined') {
+  // @ts-ignore
+  module.exports = { GameScene: class {} };
+} else {
+
 export class GameScene extends Phaser.Scene {
   player!: Phaser.Physics.Arcade.Sprite;
   monsters!: Phaser.Physics.Arcade.Group;
@@ -13,7 +19,6 @@ export class GameScene extends Phaser.Scene {
     this.exp = 0;
     this.isDead = false;
 
-    // Генерация пиксельных текстур
     const gfxPlayer = this.add.graphics();
     gfxPlayer.fillStyle(0xff0000, 1); gfxPlayer.fillRect(0, 0, 16, 16);
     gfxPlayer.generateTexture('player', 16, 16); gfxPlayer.destroy();
@@ -42,7 +47,7 @@ export class GameScene extends Phaser.Scene {
     this.monsters.getChildren().forEach((mob) => {
       this.physics.moveToObject(mob as Phaser.Physics.Arcade.Sprite, this.player, 60);
       const dist = Phaser.Math.Distance.Between(this.player.x, this.player.y, mob.x, mob.y);
-      if (dist < 40) { // Зона авто-атаки
+      if (dist < 40) {
         mob.destroy();
         this.exp += 10;
         this.expText.setText('EXP: ' + this.exp);
@@ -67,3 +72,5 @@ export class GameScene extends Phaser.Scene {
     }
   }
 }
+
+} // Закрывающая скобка защиты от серверного рендера
