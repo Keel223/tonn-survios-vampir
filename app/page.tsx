@@ -71,7 +71,7 @@ export default function Home() {
   const topUp = (amount: number) => {
     const transaction = {
       validUntil: Math.floor(Date.now() / 1000) + 60,
-      messages: [{ address: "UQ...", amount: (amount * 1000000000).toString(), comment: `deposit_${tgId}` }] // Вставьте ваш TON адрес
+      messages: [{ address: "UQD1gupv0Z0UPnKKYENmerBA526cCiNvhdr4VO0LofATa8v6", amount: (amount * 1000000000).toString(), comment: `deposit_${tgId}` }] // Вставьте ваш TON адрес
     };
     tonUI.sendTransaction(transaction);
   };
