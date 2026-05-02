@@ -2,10 +2,12 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { Game } from 'phaser';
-import { GameScene } from '@/game/GameScene';
+import { GameScene } from '../../game/GameScene'; // ПРЯМОЙ ПУТЬ
 import { useTonConnectUI, useTonAddress } from '@tonconnect/ui-react';
 
-const ADMIN_ID = 6188749367; // ВАШ TELEGRAM ID
+const ADMIN_ID = 6188749367;
+
+// ... остальной код page.tsx оставьте без изменений! ...
 
 export default function Home() {
   const [gameInstance, setGameInstance] = useState<Game | null>(null);
